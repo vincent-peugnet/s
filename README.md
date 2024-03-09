@@ -1,20 +1,51 @@
-Build HTML
+# S
 
-```bash
-php templates/base.php > test.html
-```
+This is a storyboard compiler.
 
-Build PNGs
+It compile shots and scenes stored in folters to a multi page website and PDF files.
 
-```bash
-make
-```
+It's supposed to work with [Krita](https://krita.org) for drawing the thumnails.
 
 Architecture
 ------------
 
+    📁 <scene>
+        📄 info.txt
+        📁 <shot>
+            📄 info.txt
+            🖼️ decor.jpg
+            🖌️ a.kra
+            🖌️ b.kra
 
-    📁 seq
-        📄 <shot>.txt
-        🖼️ <shot>.png
-        🖌️ <shot>.kra
+Dependancies
+------------
+
+```
+make php weasyprint poppler-utils imagemagick fswatch
+```
+
+All of those are packaged by Debian.
+
+Commands
+--------
+
+### Build
+
+```
+make
+```
+
+### Watch
+
+```
+make watch
+```
+
+### Clean
+
+```
+make clean
+```
+
+
+

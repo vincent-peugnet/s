@@ -5,7 +5,7 @@ body {
 }
 
 
-.images img {
+.thumbnail {
     max-width: 300px;
     margin: 5px;
     border: solid 1px;
@@ -24,6 +24,28 @@ h2 {
 
 h3 {
     font-size: 2em;
+}
+
+
+ul.scenes a, nav a, footer a {
+    display: block;
+    text-decoration: none;
+    padding: 11px;
+    border-top: solid 1px;
+}
+
+ul.scenes {
+    list-style: none;
+    padding: 0;
+}
+
+ul.scenes a:hover, nav a:hover, footer a:hover {
+    background: black;
+    color: white;
+}
+
+footer {
+    margin-top: 100px;
 }
 
 @media print {
@@ -45,7 +67,11 @@ h3 {
         break-inside: avoid;
     }
 
-    .sequence {
+    .scene {
         break-before: page;
+    }
+
+    nav, footer {
+        display: none;
     }
 }
