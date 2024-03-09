@@ -1,0 +1,51 @@
+body {
+    background-color: white;
+    margin: 2%;
+    font-family: sans-serif;
+}
+
+
+.images img {
+    max-width: 300px;
+    margin: 5px;
+    border: solid 1px;
+    width: 96%;
+}
+
+
+h1 {
+    font-size: 4em;
+}
+
+h2 {
+    font-size: 3em;
+    border-bottom: solid 1px;
+}
+
+h3 {
+    font-size: 2em;
+}
+
+@media print {
+    
+    @page {
+        margin: 0;
+        size: A4;
+    }
+    
+    body {
+        font-size: 10px;
+    }
+
+    .images img {
+        max-width: 200px;
+    }
+
+    .shot {
+        break-inside: avoid;
+    }
+
+    .sequence {
+        break-before: page;
+    }
+}
