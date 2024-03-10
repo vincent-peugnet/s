@@ -1,10 +1,24 @@
 <?php
+    function data(string $dir) : array
+    { 
+        $data = [];
+        if (is_file("$dir/data.yml")) {
+            $lines = file("$dir/data.yml");
+
+            foreach ($lines as $line) {
+                $cols = explode(':', $line);
+                $data[trim($cols[0])] = trim($cols[1]);
+            }
+        }
+        return $data; 
+    }
     $buildDir = $argv[1];
     $sceneName = basename($buildDir);
     $dirs =  array_diff(scandir($buildDir), array('..', '.')); 
     $shots =  array_filter($dirs, function($dirname) use($buildDir): bool {
         return is_dir($buildDir . DIRECTORY_SEPARATOR . $dirname);
     });
+    $data = data($buildDir);
 ?>
 
 
@@ -26,9 +40,11 @@
     <p class="info">
         <?= is_file("$buildDir/info.txt") ? file_get_contents("$buildDir/info.txt") : '' ?>
     </p>
+    <?php include('dataTable.php') ?>
     <?php
         foreach ($shots as $shot) {
-            $thumbnails = glob("$buildDir/$shot/*.webp");
+            $thumbnails = glob("$buildDir/$shot/*.jpg");
+            $data = data("$buildDir/$shot");
     ?>  
         <div class="shot">
             <h3>
@@ -37,6 +53,7 @@
             <p class="info">
                 <?= is_file("$buildDir/$shot/info.txt") ? file_get_contents("$buildDir/$shot/info.txt") : '' ?>
             </p>
+            <?php include('dataTable.php') ?>
             <div class="thumbnails">
                 <?php foreach ($thumbnails as $thumbnail) { ?>
                     <img src="<?= $shot . '/' . basename($thumbnail) ?>" class="thumbnail" alt="">

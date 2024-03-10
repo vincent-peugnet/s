@@ -8,6 +8,7 @@ body {
 .thumbnail {
     max-width: 300px;
     margin: 5px;
+    margin-left: 0;
     border: solid 1px;
     width: 96%;
 }
@@ -48,6 +49,28 @@ footer {
     margin-top: 100px;
 }
 
+
+
+th, td {
+    border: 1px solid #e1e1e1;
+}
+  
+th, td {
+    padding: 0.3rem;
+    padding-right:1rem;
+}
+
+th {
+    background: #e1e1e1;
+    color: black;
+}
+
+table {
+    border-collapse: collapse;
+    font-size: 0.8em;
+    margin-bottom: 10px;
+}
+
 @media print {
     
     @page {
@@ -59,7 +82,7 @@ footer {
         font-size: 10px;
     }
 
-    .images img {
+    .thumbnail {
         max-width: 200px;
     }
 

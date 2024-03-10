@@ -1,8 +1,8 @@
 <?php
-    $buildDir = $argv[1];
-    $dirs =  array_diff(scandir($buildDir), array('..', '.')); 
-    $scenes =  array_filter($dirs, function($dirname) use($buildDir): bool {
-        return is_dir($buildDir . DIRECTORY_SEPARATOR . $dirname);
+    $dir = $argv[1];
+    $dirs =  array_diff(scandir($dir), array('..', '.')); 
+    $scenes =  array_filter($dirs, function($dirname) use($dir): bool {
+        return is_dir($dir . DIRECTORY_SEPARATOR . $dirname);
     });
 ?>
 

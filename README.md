@@ -4,18 +4,20 @@ This is a storyboard compiler.
 
 It compile shots and scenes stored in folters to a multi page website and PDF files.
 
-It's supposed to work with [Krita](https://krita.org) for drawing the thumnails.
+It's supposed to work with [Krita](https://krita.org) for drawing the thumbnails.
 
 Architecture
 ------------
 
-    📁 <scene>
-        📄 info.txt
-        📁 <shot>
+    📁 src
+        📁 <scene>
             📄 info.txt
-            🖼️ decor.jpg
-            🖌️ a.kra
-            🖌️ b.kra
+            ❗ data.yml
+            📁 <shot>
+                📄 info.txt
+                ❗ data.yml
+                🖌️ a.kra
+                🖌️ b.kra
 
 Dependancies
 ------------
@@ -35,11 +37,15 @@ Commands
 make
 ```
 
+Build the Web pages and PDF files to the `build` folder.
+
 ### Watch
 
 ```
 make watch
 ```
+
+Try to detect file changes to trigger building. This avoid building the PDF as it's the slowest task.
 
 ### Clean
 

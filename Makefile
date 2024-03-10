@@ -1,12 +1,16 @@
-src_dirs   = $(shell find src -type d)
+src_dirs   = $(shell find src -type d -not -name src)
 scene_dirs = $(shell ls -d src/*)
-build_dirs = $(src_dirs:src/%=build/%)
+build_dirs = build $(src_dirs:src/%=build/%)
 kra_files  = $(shell find src -type f -name '*.kra')
-txt_files  = $(shell find src -type f -name 'info.txt')
 png_files  = $(kra_files:src/%.kra=build/%.png)
-info_files = $(txt_files:src/%=build/%)
+jpg_files  = $(png_files:.png=.jpg)
 webp_files = $(png_files:.png=.webp)
 avif_files = $(png_files:.png=.avif)
+src_info_files  = $(shell find src -type f -name 'info.txt')
+build_info_files = $(src_info_files:src/%=build/%)
+src_data_files  = $(shell find src -type f -name 'data.yml')
+build_data_files = $(src_data_files:src/%=build/%)
+cp_build_files = $(build_info_files) $(build_data_files)
 html_files = $(scene_dirs:src/%=build/%/index.html)
 pdf_files  = $(html_files:.html=.pdf)
 # used for secondary expansion
@@ -14,36 +18,39 @@ pdf_files  = $(html_files:.html=.pdf)
 
 .SECONDEXPANSION:
 .INTERMEDIATE: $(png_files)
-.NOTINTERMEDIATE: $(webp_files) $(avif_files) $(info_files) $(html_files)
+.NOTINTERMEDIATE: $(jpg_files) $(webp_files) $(avif_files) $(html_files)
 
 .PHONY: all
-all: build/index.pdf build/index.html build/base.css;
+all: build/index.pdf html;
+
+.PHONY: html
+html: build/index.html build/base.css $(html_files);
 
 .PHONY: watch
-watch: all
+watch: html
 	@echo Watching files for changes
-	fswatch --event 30 -r src templates base.css 2> /dev/null | xargs -I{} $(MAKE) --no-print-directory
+	fswatch --event 30 -r src templates base.css 2> /dev/null | xargs -I{} $(MAKE) html --no-print-directory
 
-build/base.css: base.css
+build/base.css: base.css | build
 	cp $< $@
 
-build/index.html: $(build_dirs) templates/index.php
-	php templates/index.php $(@D) > $@
+build/index.html: src templates/index.php | build
+	php templates/index.php src > $@
 
 build/index.pdf: $(pdf_files)
 	pdfunite $^ $@
 
-%/index.html: $$(filter %$%,$(webp_files) $(info_files)) templates/scene.php | %
+%/index.html: $$(filter %$%,$(jpg_files) $(cp_build_files)) templates/scene.php | %
 	php templates/scene.php $(@D) > $@
 
 %/index.pdf: %/index.html build/base.css
 	weasyprint $< $@
 
-build/%/info.txt: src/%/info.txt
+$(cp_build_files): build/%: src/% | $$(@D)
 	cp $< $@
 
-%.webp %.avif: %.png
-	convert $< $@
+%.jpg %.webp %.avif: %.png
+	convert -resize 50% -quality 50 $< $@
 
 $(png_files): build/%.png: src/%.kra | $$(@D)
 	unzip -p $< mergedimage.png > $@
