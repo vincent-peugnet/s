@@ -29,9 +29,12 @@
         </ul>
     </nav>
     <footer>
-        <a href="index.pdf" download="storyboard.pdf">
+        <a href="index.pdf" download="storyboard.pdf" class="button">
             ⬇ download PDF
         </a>
+        <p class="renderDate">
+            Rendered at <?= date("Y-m-d H:i:s") ?>
+        </p>
     </footer>
 </body>
 </html>

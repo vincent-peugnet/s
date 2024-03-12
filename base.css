@@ -27,12 +27,14 @@ h3 {
     font-size: 2em;
 }
 
+li {
+    border-top: solid 1px;
+}
 
-ul.scenes a, nav a, footer a {
+ul.scenes a, nav a {
     display: block;
     text-decoration: none;
     padding: 11px;
-    border-top: solid 1px;
 }
 
 ul.scenes {
@@ -40,9 +42,14 @@ ul.scenes {
     padding: 0;
 }
 
-ul.scenes a:hover, nav a:hover, footer a:hover {
+ul.scenes a:hover, nav a:hover {
     background: black;
     color: white;
+}
+
+p.renderDate {
+    font-size: 0.8em;
+    color: grey;
 }
 
 footer {
@@ -94,7 +101,7 @@ table {
         break-before: page;
     }
 
-    nav, footer {
+    nav, .button {
         display: none;
     }
 }
