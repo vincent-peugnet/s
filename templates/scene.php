@@ -13,7 +13,7 @@
         return $data; 
     }
 
-    include('getScenes.php');
+    include('getScenes.php'); // gives us the $scene var, a list of scene names
 
     $buildDir = $argv[2];
     $sceneName = basename($buildDir);
@@ -22,6 +22,10 @@
         return is_dir($buildDir . DIRECTORY_SEPARATOR . $dirname);
     });
     $data = data($buildDir);
+
+    $sceneImages =  array_filter($dirs, function($dirname) use($buildDir): bool {
+        return is_file($buildDir . DIRECTORY_SEPARATOR . $dirname) && str_ends_with($dirname, '.jpg');
+    });
 
     $sceneKey = array_search($sceneName, $scenes);
     $previousKey = $sceneKey - 1;
@@ -62,6 +66,11 @@
         <?= is_file("$buildDir/info.txt") ? file_get_contents("$buildDir/info.txt") : '' ?>
     </p>
     <?php include('dataTable.php') ?>
+    <div class="images">
+        <?php foreach ($sceneImages as $image) { ?>
+            <img src="<?= basename($image) ?>" alt="">
+        <?php } ?>
+    </div>
     <?php
         foreach ($shots as $shot) {
             $thumbnails = glob("$buildDir/$shot/*.jpg");
