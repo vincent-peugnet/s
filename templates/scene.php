@@ -66,7 +66,7 @@
         <?= is_file("$buildDir/info.txt") ? file_get_contents("$buildDir/info.txt") : '' ?>
     </p>
     <?php include('dataTable.php') ?>
-    <div class="images">
+    <div class="attachment">
         <?php foreach ($sceneImages as $image) { ?>
             <img src="<?= basename($image) ?>" alt="">
         <?php } ?>

@@ -119,6 +119,10 @@ table {
     margin-bottom: 10px;
 }
 
+.attachment img {
+    max-width: 96%;
+}
+
 @media print {
     
     @page {
