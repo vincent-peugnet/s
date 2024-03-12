@@ -34,7 +34,7 @@ watch: html
 build/base.css: base.css | build
 	cp $< $@
 
-build/index.html: src templates/index.php | build
+build/index.html: src templates/index.php $(src_data_files) | build
 	php templates/index.php src > $@
 
 build/index.pdf: $(pdf_files)

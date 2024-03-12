@@ -1,4 +1,7 @@
-<?php include('getScenes.php') ?>
+<?php
+    include('getScenes.php');
+    include('getData.php'); // gives us data(array $dir) function
+?>
 
 <html lang="fr">
 <head>
@@ -17,6 +20,13 @@
                 <li>
                     <a href="<?= $scene ?>/index.html">
                         <?= $scene ?>
+                        <?php $data = data("$srcDir/$scene") ?>
+                        <span class="data situation">
+                            <?= isset($data['situation']) ? $data['situation'] : '' ?>
+                        </span>
+                        <span class="data effet">
+                            <?= isset($data['effet']) ? $data['effet'] : '' ?>
+                        </span>
                     </a>
                 </li>
             <?php } ?>
