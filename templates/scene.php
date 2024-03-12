@@ -37,14 +37,22 @@
     <link rel="stylesheet" href="../base.css">
 </head>
 <body>
-<nav>
-    <a href="../index.html">↖ back to scenes</a>
-    <?php if (isset($scenes[$previousKey])) { ?>
-        <a href="<?= "../$scenes[$previousKey]/index.html" ?>">« previous scene</a>
-    <?php } ?>
-    <?php if (isset($scenes[$nextKey])) { ?>
-        <a href="<?= "../$scenes[$nextKey]/index.html" ?>">next scene »</a>
-    <?php } ?>
+<nav class="scene top">
+    <ul>
+        <li class="previous">
+            <?php if (isset($scenes[$previousKey])) { ?>
+                <a href="<?= "../$scenes[$previousKey]/index.html" ?>">« previous</a>
+            <?php } ?>
+        </li>
+        <li class="menu">
+            <a href="../index.html">≡ all scenes</a>
+        </li>
+        <li class="next">
+            <?php if (isset($scenes[$nextKey])) { ?>
+                <a href="<?= "../$scenes[$nextKey]/index.html" ?>">next »</a>
+            <?php } ?>
+        </li>
+    </ul>
 </nav>
 <main class="scene">
     <h2>
@@ -69,18 +77,35 @@
             <?php include('dataTable.php') ?>
             <div class="thumbnails">
                 <?php foreach ($thumbnails as $thumbnail) { ?>
-                    <img src="<?= $shot . '/' . basename($thumbnail) ?>" class="thumbnail" alt="">
+                    <img src="<?= $shot . '/' . basename($thumbnail) ?>" class="thumbnail" loading="lazy" alt="">
                 <?php } ?>
             </div>
         </div>
     <?php }?>
 </main>
+<nav class="scene bottom">
+    <ul>
+        <li class="previous">
+            <?php if (isset($scenes[$previousKey])) { ?>
+                <a href="<?= "../$scenes[$previousKey]/index.html" ?>">« previous</a>
+            <?php } ?>
+        </li>
+        <li class="menu">
+            <a href="../index.html">≡ all scenes</a>
+        </li>
+        <li class="next">
+            <?php if (isset($scenes[$nextKey])) { ?>
+                <a href="<?= "../$scenes[$nextKey]/index.html" ?>">next »</a>
+            <?php } ?>
+        </li>
+    </ul>
+</nav>
 <footer>
     <a href="index.pdf" download="scene-<?= $sceneName ?>.pdf" class="button">
-        ⬇ download PDF
+        ⬇ download scene PDF
     </a>
     <p class="renderDate">
-        Rendered at <?= date("Y-m-d H:i:s") ?>
+        Rendered at <?= date("Y-m-d H:i:s") ?> with <a href="https://github.com/vincent-peugnet/s" target="_blank">*S*</a>
     </p>
 </footer>
 </body>

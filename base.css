@@ -1,12 +1,13 @@
 body {
     background-color: white;
-    margin: 2%;
     font-family: sans-serif;
+    max-width: 1200px;
+    margin: auto;
 }
 
 
 .thumbnail {
-    max-width: 300px;
+    max-width: 350px;
     margin: 5px;
     margin-left: 0;
     border: solid 1px;
@@ -16,18 +17,21 @@ body {
 
 h1 {
     font-size: 4em;
+    text-align: center;
 }
 
 h2 {
     font-size: 3em;
-    border-bottom: solid 1px;
+    text-align: center;
+    margin-bottom: 0;
 }
 
 h3 {
+    margin-top: 2em;
     font-size: 2em;
 }
 
-li {
+.scenes li {
     border-top: solid 1px;
 }
 
@@ -52,11 +56,48 @@ p.renderDate {
     color: grey;
 }
 
-footer {
-    margin-top: 100px;
+main {
+    margin: 0 2%;
 }
 
+footer {
+    margin-top: 2em;
+    text-align: center;
+}
 
+nav.scene.top {
+    border-bottom: solid 1px;
+}
+
+nav.scene.bottom {
+    margin-top: 3em;
+    border-top: solid 1px;
+    border-bottom: solid 1px;
+}
+
+nav.scene ul {
+    margin: 0;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav.scene li {
+    min-width: 100px;
+}
+
+nav.scene .next {
+    text-align: right;
+}
+
+nav.scene .menu {
+    text-align: center;
+}
+
+nav.scene .previous {
+    text-align: left;
+}
 
 th, td {
     border: 1px solid #e1e1e1;
@@ -101,7 +142,7 @@ table {
         break-before: page;
     }
 
-    nav, .button {
+    nav, footer {
         display: none;
     }
 }

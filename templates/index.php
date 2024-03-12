@@ -27,7 +27,7 @@
             ⬇ download PDF
         </a>
         <p class="renderDate">
-            Rendered at <?= date("Y-m-d H:i:s") ?>
+            Rendered at <?= date("Y-m-d H:i:s") ?> with <a href="https://github.com/vincent-peugnet/s" target="_blank">*S*</a>
         </p>
     </footer>
 </body>
