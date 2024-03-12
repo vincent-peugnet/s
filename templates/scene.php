@@ -12,13 +12,20 @@
         }
         return $data; 
     }
-    $buildDir = $argv[1];
+
+    include('getScenes.php');
+
+    $buildDir = $argv[2];
     $sceneName = basename($buildDir);
     $dirs =  array_diff(scandir($buildDir), array('..', '.')); 
     $shots =  array_filter($dirs, function($dirname) use($buildDir): bool {
         return is_dir($buildDir . DIRECTORY_SEPARATOR . $dirname);
     });
     $data = data($buildDir);
+
+    $sceneKey = array_search($sceneName, $scenes);
+    $previousKey = $sceneKey - 1;
+    $nextKey = $sceneKey + 1;
 ?>
 
 
@@ -32,6 +39,12 @@
 <body>
 <nav>
     <a href="../index.html">↖ back to scenes</a>
+    <?php if (isset($scenes[$previousKey])) { ?>
+        <a href="<?= "../$scenes[$previousKey]/index.html" ?>">« previous scene</a>
+    <?php } ?>
+    <?php if (isset($scenes[$nextKey])) { ?>
+        <a href="<?= "../$scenes[$nextKey]/index.html" ?>">next scene »</a>
+    <?php } ?>
 </nav>
 <main class="scene">
     <h2>

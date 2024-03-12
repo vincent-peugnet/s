@@ -41,7 +41,7 @@ build/index.pdf: $(pdf_files)
 	pdfunite $^ $@
 
 %/index.html: $$(filter %$%,$(jpg_files) $(cp_build_files)) templates/scene.php | %
-	php templates/scene.php $(@D) > $@
+	php templates/scene.php src $(@D) > $@
 
 %/index.pdf: %/index.html build/base.css
 	weasyprint $< $@
