@@ -42,7 +42,8 @@ h3 {
 ul.scenes a, nav a {
     display: block;
     text-decoration: none;
-    padding: 11px;
+    padding: 12px;
+    color: black;
 }
 
 ul.scenes {
@@ -50,12 +51,21 @@ ul.scenes {
     padding: 0;
 }
 
-.scenes span.data {
+ul.scenes a span {
+    display: inline-block;
+    width: 10%;
+    text-wrap: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+ul.scenes a span.data {
     font-family: monospace;
-    font-size: 1.2em;
-    color: gray;
-    padding-left: 4%;
-    text-transform: uppercase;
+    color: grey;
+}
+
+ul.scenes a span.info {
+    width: calc(80% - 120px);
 }
 
 ul.scenes a:hover, nav a:hover {
@@ -97,6 +107,7 @@ nav.scene ul {
 
 nav.scene li {
     flex-grow: 1;
+    width: 33.3%;
 }
 
 nav.scene .next {
@@ -161,4 +172,9 @@ table {
     nav, footer {
         display: none;
     }
+}
+
+
+ul.scenes span.name {
+    width: 100px;
 }

@@ -11,13 +11,17 @@ Architecture
 
     📁 src
         📁 <scene>
-            📄 info.txt
             ❗ data.yml
             📁 <shot>
-                📄 info.txt
                 ❗ data.yml
                 🖌️ a.kra
                 🖌️ b.kra
+
+`data.yml` can use any custom key. But some of them are specifics:
+
+- `info` key is rendered as text paragraph.
+- in **scenes**, `effet` (night or day) and `situation`(indoor, outdoor) are displayed on the the main index.
+
 
 Dependancies
 ------------
@@ -37,7 +41,11 @@ Commands
 make
 ```
 
-Build the Web pages and PDF files to the `build` folder.
+Build the Web pages and PDF files to the `build` folder. You can spkip PDF creation (which is slower) by using:
+
+```
+make html
+```
 
 ### Watch
 
@@ -45,7 +53,7 @@ Build the Web pages and PDF files to the `build` folder.
 make watch
 ```
 
-Try to detect file changes to trigger building. This avoid building the PDF as it's the slowest task.
+Try to detect file changes to trigger building process (excluding PDF).
 
 ### Clean
 
@@ -55,3 +63,10 @@ make clean
 
 
 
+Thanks
+------
+
+- Special thanks to **Nicolas Peugnet** and his suspicious love for Makefiles ❤️.
+- To the **Krita** team and community for this cool free software. (And thanks to [the KritaPy](https://github.com/ivyallie/KritaPy) repo who help me to figure out that `.kra` are zip files that already contain the PNG of merged Krita layers).
+- To **Weasyprint**, even if it is a bit slow 🥲.
+- And of course to the Debian team and whole UNIX ecosystem !

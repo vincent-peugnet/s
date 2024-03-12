@@ -51,12 +51,15 @@
         Scene <?= $sceneName ?>
     </h2>
     <p class="info">
-        <?= is_file("$buildDir/info.txt") ? file_get_contents("$buildDir/info.txt") : '' ?>
+        <?= isset($data['info']) ? $data['info'] : '' ?>
     </p>
-    <?php include('dataTable.php') ?>
+    <?php
+        unset($data['info']);
+        include('dataTable.php');
+    ?>
     <div class="attachment">
         <?php foreach ($sceneImages as $image) { ?>
-            <img src="<?= basename($image) ?>" alt="">
+            <img src="<?= basename($image) ?>" loading="lazy" alt="">
         <?php } ?>
     </div>
     <?php
@@ -69,9 +72,12 @@
                 Shot <?= $shot ?>
             </h3>
             <p class="info">
-                <?= is_file("$buildDir/$shot/info.txt") ? file_get_contents("$buildDir/$shot/info.txt") : '' ?>
+                <?= isset($data['info']) ? $data['info'] : '' ?>
             </p>
-            <?php include('dataTable.php') ?>
+            <?php
+                unset($data['info']); 
+                include('dataTable.php');
+            ?>
             <div class="thumbnails">
                 <?php foreach ($thumbnails as $thumbnail) { ?>
                     <img src="<?= $shot . '/' . basename($thumbnail) ?>" class="thumbnail" loading="lazy" alt="">

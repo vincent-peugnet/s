@@ -19,13 +19,18 @@
             <?php foreach ($scenes as $scene) { ?>
                 <li>
                     <a href="<?= $scene ?>/index.html">
-                        <?= $scene ?>
+                        <span class="name">
+                            <?= $scene ?>
+                        </span>
                         <?php $data = data("$srcDir/$scene") ?>
                         <span class="data situation">
                             <?= isset($data['situation']) ? $data['situation'] : '' ?>
                         </span>
                         <span class="data effet">
                             <?= isset($data['effet']) ? $data['effet'] : '' ?>
+                        </span>
+                        <span class="data info" title="<?= isset($data['info']) ? $data['info'] : '' ?>">
+                            <?= isset($data['info']) ? $data['info'] : '' ?>
                         </span>
                     </a>
                 </li>
