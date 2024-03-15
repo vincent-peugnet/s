@@ -67,9 +67,10 @@
             $thumbnails = glob("$buildDir/$shot/*.jpg");
             $data = data("$buildDir/$shot");
     ?>  
-        <div class="shot">
+        <div class="shot" id="<?= $shot ?>">
             <h3>
                 Shot <?= $shot ?>
+                <a href="#<?= $shot ?>">#</a>
             </h3>
             <p class="info">
                 <?= isset($data['info']) ? $data['info'] : '' ?>
