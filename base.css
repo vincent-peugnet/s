@@ -68,7 +68,7 @@ ul.scenes {
 
 ul.scenes a span {
     display: inline-block;
-    width: 10%;
+    width: 15%;
     text-wrap: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -80,7 +80,7 @@ ul.scenes a span.data {
 }
 
 ul.scenes a span.info {
-    width: calc(80% - 120px);
+    width: calc(85% - 120px);
 }
 
 ul.scenes a:hover, nav a:hover {

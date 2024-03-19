@@ -5,10 +5,10 @@
 
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Storyboard</title>
-    <link rel="stylesheet" href="base.css">
+    <link rel="stylesheet" href="base.css" />
 </head>
 <body>
     <h1>
@@ -23,9 +23,6 @@
                             <?= $scene ?>
                         </span>
                         <?php $data = data("$srcDir/$scene") ?>
-                        <span class="data situation">
-                            <?= isset($data['situation']) ? $data['situation'] : '' ?>
-                        </span>
                         <span class="data effet">
                             <?= isset($data['effet']) ? $data['effet'] : '' ?>
                         </span>
