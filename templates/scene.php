@@ -1,7 +1,7 @@
 <?php
 
     include('getData.php'); // gives us data(array $dir) function
-    include('getScenes.php'); // gives us the $scene var, a list of scene names
+    include('getScenes.php'); // gives us the $scenes var, a list of scene names
 
     $buildDir = $argv[2];
     $sceneName = basename($buildDir);
@@ -18,15 +18,41 @@
     $sceneKey = array_search($sceneName, $scenes);
     $previousKey = $sceneKey - 1;
     $nextKey = $sceneKey + 1;
+
+    /**
+     * Add links to scenes and shots
+     */
+    function autoLink(string $infoText, string $currentScene): string
+    {
+        $infoText = str_replace('./', "$currentScene/", $infoText);
+        return preg_replace_callback('#(\w+)?/(\w+)?#', function($matches) {
+            $scene = $matches[1] ?? null;
+            $shot = $matches[2] ?? null;
+
+            global $scenes;
+            if (!in_array($scene, $scenes)) {
+                return $matches[0];
+            }
+
+            $linkText = '';
+            $href = "../$scene/index.html";
+            $linkText = $scene;
+            if (!empty($shot)) {
+                $href .= "#$shot";
+                $linkText .= "/$shot";
+            }
+            return "<a href=\"$href\">$linkText</a>";
+        }, $infoText);
+    }
 ?>
 
 
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Scene <?= $sceneName ?></title>
-    <link rel="stylesheet" href="../base.css">
+    <link rel="stylesheet" href="../base.css" />
 </head>
 <body>
 <nav class="scene top">
@@ -51,7 +77,7 @@
         Scene <?= $sceneName ?>
     </h2>
     <p class="info">
-        <?= isset($data['info']) ? $data['info'] : '' ?>
+        <?= isset($data['info']) ? autoLink($data['info'], $sceneName) : '' ?>
     </p>
     <?php
         unset($data['info']);
@@ -59,7 +85,7 @@
     ?>
     <div class="attachment">
         <?php foreach ($sceneImages as $image) { ?>
-            <img src="<?= basename($image) ?>" loading="lazy" alt="">
+            <img src="<?= basename($image) ?>" loading="lazy" alt="" />
         <?php } ?>
     </div>
     <?php
@@ -73,7 +99,7 @@
                 <a href="#<?= $shot ?>">#</a>
             </h3>
             <p class="info">
-                <?= isset($data['info']) ? $data['info'] : '' ?>
+                <?= isset($data['info']) ? autoLink($data['info'], $sceneName) : '' ?>
             </p>
             <?php
                 unset($data['info']); 
@@ -81,7 +107,7 @@
             ?>
             <div class="thumbnails">
                 <?php foreach ($thumbnails as $thumbnail) { ?>
-                    <img src="<?= $shot . '/' . basename($thumbnail) ?>" class="thumbnail" loading="lazy" alt="">
+                    <img src="<?= $shot . '/' . basename($thumbnail) ?>" class="thumbnail" loading="lazy" alt="" />
                 <?php } ?>
             </div>
         </div>

@@ -43,7 +43,10 @@ build/index.pdf: $(pdf_files)
 %/index.html: $$(filter %$%,$(jpg_files) $(cp_build_files)) templates/scene.php | %
 	php templates/scene.php src $(@D) > $@
 
-%/index.pdf: %/index.html build/base.css
+%.nohref.html: %.html
+	xmlstarlet ed -d "//a/@href" $< > $@
+
+%/index.pdf: %/index.nohref.html build/base.css
 	weasyprint $< $@
 
 $(cp_build_files): build/%: src/% | $$(@D)

@@ -12,6 +12,7 @@ Architecture
     📁 src
         📁 <scene>
             ❗ data.yml
+            🖌️ set.kra
             📁 <shot>
                 ❗ data.yml
                 🖌️ a.kra
@@ -22,12 +23,28 @@ Architecture
 - `info` key is rendered as text paragraph.
 - in **scenes**, `effet` (night or day) and `situation`(indoor, outdoor) are displayed on the the main index.
 
+### Syntax
+
+The info key allow a syntax to target scenes and shots.
+
+    SCENE/SHOT
+
+Will create a link to a specific shot in a scene.
+
+    SHENE/
+
+Will create a link to a scene.
+
+    ./SHOT
+
+Will create a link to a given shot in the current scene.
+
 
 Dependancies
 ------------
 
 ```
-make php weasyprint poppler-utils imagemagick fswatch
+make php weasyprint poppler-utils imagemagick xmlstarlet fswatch
 ```
 
 All of those are packaged by Debian.
