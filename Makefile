@@ -24,7 +24,7 @@ pdf_files  = $(html_files:.html=.pdf)
 all: build/index.pdf html;
 
 .PHONY: html
-html: build/index.html build/base.css $(html_files);
+html: build/index.html build/shotlist.html build/base.css $(html_files);
 
 .PHONY: watch
 watch: html
@@ -36,6 +36,9 @@ build/base.css: base.css | build
 
 build/index.html: src templates/index.php $(src_data_files) | build
 	php templates/index.php src > $@
+
+build/shotlist.html: src templates/shotList.php $(src_data_files) | build
+	php templates/shotList.php src > $@
 
 build/index.pdf: $(pdf_files)
 	pdfunite $^ $@

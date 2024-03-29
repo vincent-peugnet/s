@@ -102,17 +102,17 @@ footer {
     text-align: center;
 }
 
-nav.scene.top {
+nav.top {
     border-bottom: solid 1px;
 }
 
-nav.scene.bottom {
+nav.bottom {
     margin-top: 3em;
     border-top: solid 1px;
     border-bottom: solid 1px;
 }
 
-nav.scene ul {
+nav ul {
     margin: 0;
     list-style: none;
     padding: 0;
@@ -120,20 +120,17 @@ nav.scene ul {
     justify-content: space-between;
 }
 
-nav.scene li {
+nav li {
     flex-grow: 1;
-    width: 33.3%;
-}
-
-nav.scene .next {
-    text-align: right;
-}
-
-nav.scene .menu {
+    width: 50%;
     text-align: center;
 }
 
-nav.scene .previous {
+nav li.next {
+    text-align: right;
+}
+
+nav li.previous {
     text-align: left;
 }
 

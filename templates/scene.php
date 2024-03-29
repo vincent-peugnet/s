@@ -57,17 +57,22 @@
 <body>
 <nav class="scene top">
     <ul>
+        <li class="scenes">
+            <a href="../index.html">☰ all scenes</a>
+        </li>
+        <li class="shots">
+            <a href="../shotlist.html">☷ shot list</a>
+        </li>
+    </ul>
+    <ul>
         <li class="previous">
             <?php if (isset($scenes[$previousKey])) { ?>
-                <a href="<?= "../$scenes[$previousKey]/index.html" ?>">« previous</a>
+                <a href="<?= "../$scenes[$previousKey]/index.html" ?>"><?= $scenes[$previousKey] ?></a>
             <?php } ?>
-        </li>
-        <li class="menu">
-            <a href="../index.html">≡ all scenes</a>
         </li>
         <li class="next">
             <?php if (isset($scenes[$nextKey])) { ?>
-                <a href="<?= "../$scenes[$nextKey]/index.html" ?>">next »</a>
+                <a href="<?= "../$scenes[$nextKey]/index.html" ?>"><?= $scenes[$nextKey] ?></a>
             <?php } ?>
         </li>
     </ul>
@@ -85,7 +90,7 @@
     ?>
     <div class="attachment">
         <?php foreach ($sceneImages as $image) { ?>
-            <img src="<?= basename($image) ?>" loading="lazy" alt="" />
+            <img src="<?= basename($image) ?>" alt="" />
         <?php } ?>
     </div>
     <?php
@@ -107,7 +112,7 @@
             ?>
             <div class="thumbnails">
                 <?php foreach ($thumbnails as $thumbnail) { ?>
-                    <img src="<?= $shot . '/' . basename($thumbnail) ?>" class="thumbnail" loading="lazy" alt="" />
+                    <img src="<?= $shot . '/' . basename($thumbnail) ?>" class="thumbnail" alt="" />
                 <?php } ?>
             </div>
         </div>
@@ -117,15 +122,12 @@
     <ul>
         <li class="previous">
             <?php if (isset($scenes[$previousKey])) { ?>
-                <a href="<?= "../$scenes[$previousKey]/index.html" ?>">« previous</a>
+                <a href="<?= "../$scenes[$previousKey]/index.html" ?>"><?= $scenes[$previousKey] ?></a>
             <?php } ?>
-        </li>
-        <li class="menu">
-            <a href="../index.html">≡ all scenes</a>
         </li>
         <li class="next">
             <?php if (isset($scenes[$nextKey])) { ?>
-                <a href="<?= "../$scenes[$nextKey]/index.html" ?>">next »</a>
+                <a href="<?= "../$scenes[$nextKey]/index.html" ?>"><?= $scenes[$nextKey] ?></a>
             <?php } ?>
         </li>
     </ul>

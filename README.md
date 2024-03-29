@@ -21,7 +21,8 @@ Architecture
 `data.yml` can use any custom key. But some of them are specifics:
 
 - `info` key is rendered as text paragraph.
-- in **scenes**, `effet` (night or day) and `situation`(indoor, outdoor) are displayed on the the main index.
+- in **scenes**, `effet` (night or day / indoor, outdoor) is displayed on the the scene index.
+- in **shots**, `valeur`, `mouvement`, `focale`, `hauteur` are used in the shot list page.
 
 ### Syntax
 

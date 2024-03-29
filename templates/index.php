@@ -11,10 +11,20 @@
     <link rel="stylesheet" href="base.css" />
 </head>
 <body>
+    <nav class="top">
+        <ul>
+            <li>
+                <a href="index.html">☰ all scenes</a>
+            </li>
+            <li>
+                <a href="shotlist.html">☷ shot list</a>
+            </li>
+        </ul>
+    </nav>
     <h1>
-        Storyboard
+        Scenes
     </h1>
-    <nav>
+    <main>
         <ul class="scenes">
             <?php foreach ($scenes as $scene) { ?>
                 <li>
@@ -33,7 +43,10 @@
                 </li>
             <?php } ?>
         </ul>
-    </nav>
+    </main>
+    <p class="statisctics">
+        Scenes: <?= count($scenes) ?>
+    </p>
     <footer>
         <a href="index.pdf" download="storyboard.pdf" class="button">
             ⬇ download PDF
