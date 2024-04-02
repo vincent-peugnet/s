@@ -2,6 +2,7 @@
 
     include('getData.php'); // gives us data(array $dir) function
     include('getScenes.php'); // gives us the $scenes var, a list of scene names
+    require('autoLink.php'); // autoLink function
 
     $buildDir = $argv[2];
     $sceneName = basename($buildDir);
@@ -18,32 +19,6 @@
     $sceneKey = array_search($sceneName, $scenes);
     $previousKey = $sceneKey - 1;
     $nextKey = $sceneKey + 1;
-
-    /**
-     * Add links to scenes and shots
-     */
-    function autoLink(string $infoText, string $currentScene): string
-    {
-        $infoText = str_replace('./', "$currentScene/", $infoText);
-        return preg_replace_callback('#(\w+)?/(\w+)?#', function($matches) {
-            $scene = $matches[1] ?? null;
-            $shot = $matches[2] ?? null;
-
-            global $scenes;
-            if (!in_array($scene, $scenes)) {
-                return $matches[0];
-            }
-
-            $linkText = '';
-            $href = "../$scene/index.html";
-            $linkText = $scene;
-            if (!empty($shot)) {
-                $href .= "#$shot";
-                $linkText .= "/$shot";
-            }
-            return "<a href=\"$href\">$linkText</a>";
-        }, $infoText);
-    }
 ?>
 
 
@@ -82,7 +57,7 @@
         Scene <?= $sceneName ?>
     </h2>
     <p class="info">
-        <?= isset($data['info']) ? autoLink($data['info'], $sceneName) : '' ?>
+        <?= isset($data['info']) ? autoLink($data['info'], $sceneName, '..') : '' ?>
     </p>
     <?php
         unset($data['info']);
@@ -104,7 +79,7 @@
                 <a href="#<?= $shot ?>">#</a>
             </h3>
             <p class="info">
-                <?= isset($data['info']) ? autoLink($data['info'], $sceneName) : '' ?>
+                <?= isset($data['info']) ? autoLink($data['info'], $sceneName, '..') : '' ?>
             </p>
             <?php
                 unset($data['info']); 

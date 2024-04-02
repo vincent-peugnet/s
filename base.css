@@ -150,12 +150,61 @@ th {
 
 table {
     border-collapse: collapse;
+}
+
+main.scene table {
     font-size: 0.8em;
     margin-bottom: 10px;
 }
 
 .attachment img {
     max-width: 96%;
+}
+
+td.link {
+    text-align: center;
+    padding: 0;
+}
+
+td.scene {
+    background-color: #f7f7f7;
+}
+
+td.scene a {
+    padding: 10px;
+}
+
+td.link a {
+    text-decoration: none;
+    display: block;
+    height: 100%;
+    color: black;
+}
+
+table { height: 1px; } /* Will be ignored, don't worry. */
+tr { height: 100%; }
+td { height: 100%; }
+
+tr:hover {
+    background: #e1e1e1;
+}
+
+td a:hover {
+    background: black;
+    color: white;
+}
+
+
+a.sLink {
+    text-decoration: none;
+    border: solid 1px;
+    color: black;
+    padding: 0 3px;
+}
+
+a.sLink:hover {
+    background-color: black;
+    color: white;
 }
 
 @media print {

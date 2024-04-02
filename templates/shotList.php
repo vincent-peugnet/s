@@ -22,9 +22,6 @@
 <table>
     <tr>
         <th>
-            scene
-        </th>
-        <th>
             shot
         </th>
         <th>
@@ -50,21 +47,29 @@
 
 require('getScenes.php');
 require('getData.php');
+require('autoLink.php');
+$shotCounter = 0;
 
 foreach ($scenes as $scene) {
+    ?>
+    <tr>
+        <td colspan="7" class="link scene">
+            <a href="<?= $scene ?>/index.html">
+                <?= $scene ?>
+            </a>
+        </td>
+    </tr>
+    <?php
     $sceneSrcDir = "$srcDir/$scene";
     $dirs =  array_diff(scandir($sceneSrcDir), array('..', '.')); 
     $shots =  array_filter($dirs, function($dirname) use($sceneSrcDir): bool {
         return is_dir($sceneSrcDir . DIRECTORY_SEPARATOR . $dirname);
     });
     foreach ($shots as $shot) {
+        $shotCounter ++;
         $data = data("$sceneSrcDir/$shot");
         ?>
         <tr>
-
-            <td>
-                <?= $scene ?>
-            </td>
             <td>
                 <?= $shot ?>
             </td>
@@ -81,10 +86,10 @@ foreach ($scenes as $scene) {
                 <?= isset($data['hauteur']) ? $data['hauteur'] : '' ?>
             </td>
             <td>
-                <?= isset($data['info']) ? $data['info'] : '' ?>
+                <?= isset($data['info']) ? autoLink($data['info'], $scene, '.') : '' ?>
             </td>
-            <td>
-                <a href="<?= $scene ?>/index.html#<?= $shot ?>">⊞</a>
+            <td class="link">
+                <a href="<?= $scene ?>/index.html#<?= $shot ?>">✦</a>
             </td>
         </tr>
 
@@ -98,6 +103,9 @@ foreach ($scenes as $scene) {
 
 ?>
 </table>
+<p class="statistic">
+    <?= $shotCounter ?> shots
+</p>
 </body>
 
 </html>
