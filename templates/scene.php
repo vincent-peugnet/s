@@ -75,7 +75,7 @@
     ?>  
         <div class="shot" id="<?= $shot ?>">
             <h3>
-                Shot <?= $shot ?>
+                <?= $sceneName ?> / <?= $shot ?>
                 <a href="#<?= $shot ?>">#</a>
             </h3>
             <p class="info">

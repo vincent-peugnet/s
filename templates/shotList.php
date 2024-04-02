@@ -19,7 +19,7 @@
     <h1>
         Shot list
     </h1>
-<table>
+<table class="shotList">
     <tr>
         <th>
             shot

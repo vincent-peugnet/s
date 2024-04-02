@@ -4,30 +4,29 @@
 
 body {
     background-color: white;
-    font-family: sans-serif;
+    font-family: "Liberation Sans", sans-serif;
     max-width: 1200px;
     margin: auto;
 }
 
 
 .thumbnail {
-    max-width: 350px;
-    margin: 5px;
+    max-width: 280px;
+    margin: 3px;
     margin-left: 0;
-    border: solid 1px;
+    border: solid 1px lightgrey;
     width: 96%;
 }
 
 
 h1 {
-    font-size: 4em;
+    font-size: 5em;
     text-align: center;
 }
 
 h2 {
-    font-size: 3em;
+    font-size: 4em;
     text-align: center;
-    margin-bottom: 0;
 }
 
 h3 {
@@ -158,7 +157,9 @@ main.scene table {
 }
 
 .attachment img {
-    max-width: 96%;
+    width: 96%;
+    max-width: 400px;
+    border: solid 1px lightgrey;
 }
 
 td.link {
@@ -181,7 +182,7 @@ td.link a {
     color: black;
 }
 
-table { height: 1px; } /* Will be ignored, don't worry. */
+table.shotList { height: 1px; } /* Will be ignored, don't worry. */
 tr { height: 100%; }
 td { height: 100%; }
 
@@ -210,16 +211,16 @@ a.sLink:hover {
 @media print {
     
     @page {
-        margin: 0;
+        margin: 1cm 0.4cm;
         size: A4;
     }
     
     body {
-        font-size: 10px;
+        font-size: 12px;
     }
 
     .thumbnail {
-        max-width: 200px;
+        max-width: 170px;
     }
 
     .shot {
@@ -232,6 +233,10 @@ a.sLink:hover {
 
     nav, footer {
         display: none;
+    }
+
+    h2 {
+        margin-top: 0;
     }
 
     h3 a {
