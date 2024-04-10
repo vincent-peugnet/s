@@ -27,13 +27,20 @@
     <main>
         <ul class="scenes">
             <?php foreach ($scenes as $scene) { ?>
+                <?php
+                    $data = data("$srcDir/$scene");
+                    if (isset($data['effet'])) {
+                        $effets = ' ' . implode(' ', explode('/', strtolower($data['effet'])));
+                    } else {
+                        $effets = '';
+                    }
+                ?>
                 <li>
                     <a href="<?= $scene ?>/index.html">
                         <span class="name">
                             <?= $scene ?>
                         </span>
-                        <?php $data = data("$srcDir/$scene") ?>
-                        <span class="data effet">
+                        <span class="data effet<?= $effets ?>">
                             <?= isset($data['effet']) ? $data['effet'] : '' ?>
                         </span>
                         <span class="data info" title="<?= isset($data['info']) ? $data['info'] : '' ?>">

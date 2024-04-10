@@ -51,12 +51,12 @@ h3 a:hover {
 
 .scenes li {
     border-top: solid 1px;
+    display: block;
 }
 
 ul.scenes a, nav a {
     display: block;
     text-decoration: none;
-    padding: 12px;
     color: black;
 }
 
@@ -65,25 +65,38 @@ ul.scenes {
     padding: 0;
 }
 
+ul.scenes a {
+    display: flex;
+}
+
 ul.scenes a span {
-    display: inline-block;
-    width: 15%;
+    white-space: nowrap;
     text-wrap: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+    padding: 10px 0;
+    /* line-height: 15px; */
 }
 
 ul.scenes a span.data {
     font-family: monospace;
-    color: grey;
 }
 
 ul.scenes a span.info {
-    width: calc(85% - 120px);
+    width: calc(100% - 170px);
+    color: grey;
 }
 
-ul.scenes a:hover, nav a:hover {
-    background: black;
+ul.scenes span.name {
+    width: 70px;
+}
+
+ul.scenes a span.effet {
+    width: 100px;
+}
+
+nav a:hover, ul.scenes a:hover {
+    background-color: black;
     color: white;
 }
 
@@ -123,6 +136,10 @@ nav li {
     flex-grow: 1;
     width: 50%;
     text-align: center;
+}
+
+nav a {
+    padding: 12px;
 }
 
 nav li.next {
@@ -208,6 +225,34 @@ a.sLink:hover {
     color: white;
 }
 
+.effet.int.jour {
+    background-color: #fffec4;
+}
+
+.effet.ext.jour {
+    background-color: azure;
+}
+
+.effet.ext.nuit {
+    background-color: #6e95cf;
+}
+
+.effet.int.nuit {
+    background-color: burlywood;
+}
+
+.effet.int.ext.nuit {
+    background-color: rgb(222, 135, 176);
+}
+
+.effet.ext.soir {
+    background-color: rgb(194, 130, 231);
+}
+
+span.effet {
+    color: black;
+}
+
 @media print {
     
     @page {
@@ -242,9 +287,4 @@ a.sLink:hover {
     h3 a {
         display: none;
     }
-}
-
-
-ul.scenes span.name {
-    width: 100px;
 }
