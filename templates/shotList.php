@@ -59,7 +59,7 @@ $shotCounter = 0;
 foreach ($scenes as $scene) {
     ?>
     <tr>
-        <td colspan="7" class="link scene">
+        <td colspan="9" class="link scene">
             <a href="<?= $scene ?>/index.html">
                 <?= $scene ?>
             </a>
