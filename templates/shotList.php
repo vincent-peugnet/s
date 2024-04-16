@@ -37,6 +37,12 @@
             hauteur
         </th>
         <th>
+            machinerie
+        </th>
+        <th>
+            sfx
+        </th>
+        <th>
             info
         </th>
         <th>
@@ -84,6 +90,12 @@ foreach ($scenes as $scene) {
             </td>
             <td>
                 <?= isset($data['hauteur']) ? $data['hauteur'] : '' ?>
+            </td>
+            <td>
+                <?= isset($data['machinerie']) ? $data['machinerie'] : '' ?>
+            </td>
+            <td>
+                <?= isset($data['sfx']) ? $data['sfx'] : '' ?>
             </td>
             <td>
                 <?= isset($data['info']) ? autoLink($data['info'], $scene, '.') : '' ?>
