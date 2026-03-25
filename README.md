@@ -6,6 +6,8 @@ It compile shots and scenes stored in folters to a multi page website and PDF fi
 
 It's supposed to work with [Krita](https://krita.org) for drawing the thumbnails.
 
+More informations in this [presentation](https://246.eu/s-presentation).
+
 Architecture
 ------------
 
